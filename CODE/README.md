@@ -1,3 +1,8 @@
-# animal-behavior
+# animal
 
 ## CODE
+
+
+
+-- npm install -g @vue/cli
+
