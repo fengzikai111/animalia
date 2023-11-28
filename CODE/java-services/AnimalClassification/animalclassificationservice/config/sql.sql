@@ -1,11 +1,15 @@
--- 动物分类表
-CREATE TABLE Animal_Classification_Kingdom (
-    id SERIAL PRIMARY KEY COMMENT '主键',
-    name VARCHAR(255) NOT NULL COMMENT '界的名称',
-    description TEXT COMMENT '界的描述',
-    level INT NOT NULL DEFAULT 1 COMMENT '层级，表示所处级别',
-    path VARCHAR(255) NOT NULL DEFAULT '/' COMMENT '完整路径，表示类别在层级结构中的位置'
-) COMMENT '动物分类 - 界';
+
+-- 根据下列表Animal_Classification_Kingdom 生成 对应 mybatis plus  mapper 配置：
+-- 1. 生成mapper xml配置
+
+
+-- CREATE TABLE Animal_Classification_Kingdom (
+--     id SERIAL PRIMARY KEY COMMENT '主键',
+--     name VARCHAR(255) NOT NULL COMMENT '界的名称',
+--     description TEXT COMMENT '界的描述',
+--     level INT NOT NULL DEFAULT 1 COMMENT '层级，表示所处级别',
+--     path VARCHAR(255) NOT NULL DEFAULT '/' COMMENT '完整路径，表示类别在层级结构中的位置'
+-- ) COMMENT '动物分类 - 界';
 
 CREATE TABLE Animal_Classification_Phylum (
     id SERIAL PRIMARY KEY COMMENT '主键',

@@ -1,4 +1,4 @@
-package com.animalia.animalclassification.animalclassificationservice.controller;
+package com.animalia.animalclassification.animalclassificationservice;
 
 import com.animalia.animalclassification.animalclassificationservice.controller.AnimalClassificationKingdomController;
 import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationKingdom;
