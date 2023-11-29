@@ -14,7 +14,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/animalclassificationKingdom")
+@RequestMapping("/animalclassificationkingdom")
 public class AnimalClassificationKingdomController {
 
     @Autowired
@@ -25,14 +25,6 @@ public class AnimalClassificationKingdomController {
     public List<AnimalClassificationKingdom> getAllAnimalClassificationKingdom() {
         return animalClassificationKingdomService.getAllAnimalClassificationKingdom();
     }
-
-    @PostMapping("/list")
-    @ResponseBody
-    public List<AnimalClassificationKingdom> getListAnimalClassificationKingdom( @RequestBody AnimalClassificationKingdom animalClassificationKingdom) {
-        System.out.println(animalClassificationKingdom.getName());
-        return animalClassificationKingdomService.getAllAnimalClassificationKingdom();
-    }
-
 
     @GetMapping("/id/{id}")
     public AnimalClassificationKingdom getAnimalClassificationKingdomById(@PathVariable Integer id) {

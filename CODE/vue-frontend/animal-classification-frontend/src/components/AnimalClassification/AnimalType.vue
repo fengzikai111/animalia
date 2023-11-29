@@ -20,7 +20,7 @@ export default {
   methods: {
     getLink(level, name) {
       // Create a dynamic link based on the level and name
-      return `/animal-classification-display/${level}/${encodeURIComponent(name)}`;
+      return `/animal-classification-table/${level.toLowerCase()}/${encodeURIComponent(name)}`;
     },
   },
 };

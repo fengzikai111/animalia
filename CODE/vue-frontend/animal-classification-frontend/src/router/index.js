@@ -16,12 +16,6 @@ const router = createRouter({
     { path: '/login', component: Login },
     { path: '/create-category', component: CreateCategory },
     { path: '/animal-classification-display', component: AnimalClassificationDisplay },
-    {
-      path: '/animal-classification-display/:level/:name',
-      name: 'AnimalClassificationDisplay',
-      component: AnimalClassificationDisplay,
-      props: true,
-    },
     { path: '/animal-classification-table', component: AnimalClassificationTable },    
     // Add more routes as needed
   ],
