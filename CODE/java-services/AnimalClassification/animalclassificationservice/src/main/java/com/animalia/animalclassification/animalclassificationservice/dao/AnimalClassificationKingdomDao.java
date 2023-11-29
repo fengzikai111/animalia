@@ -12,6 +12,7 @@ public class AnimalClassificationKingdomDao {
 
     @Autowired
     AnimalClassificationKingdomMapper animalClassificationKingdomMapper;
+
     public List<AnimalClassificationKingdom> getAllAnimalClassificationKingdom() {
         return animalClassificationKingdomMapper.selectAll();
 

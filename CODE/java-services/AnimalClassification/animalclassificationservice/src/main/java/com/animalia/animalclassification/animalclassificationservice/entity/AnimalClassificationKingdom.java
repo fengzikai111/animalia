@@ -12,6 +12,6 @@ public class AnimalClassificationKingdom {
     private Integer id;
     private String name;
     private String description;
-    private Integer level;
+    private String level;
     private String path;
 }
