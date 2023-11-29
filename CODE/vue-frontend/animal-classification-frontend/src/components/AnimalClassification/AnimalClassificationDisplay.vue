@@ -2,7 +2,7 @@
 <template>
   <div class="animal-classification-display">
     <div class="header">
-      <h2>Animal Classification</h2>
+      <h2>动物种类</h2>
       <div class="buttons">
         <button @click="addNewType">Add New</button>
         <button @click="editClassification">Edit</button>
@@ -14,6 +14,8 @@
 
 <script>
 import AnimalType from './AnimalType.vue';
+import axios from 'axios';
+import qs from 'qs'
 
 export default {
   components: {
@@ -22,55 +24,29 @@ export default {
   data() {
     return {
       animalClassification: {
-        name: 'Animalia',
+        name: '动物界',
         level: 'Kingdom', // Added level property
         children: [
           {
-            name: 'Chordata',
+            name: '脊椎动物门',
             level: 'Phylum', // Added level property
-            children: [
-              {
-                name: 'Mammalia',
-                level: 'Class', // Added level property
-                children: [
-                  {
-                    name: 'Carnivora',
-                    level: 'Order', // Added level property
-                    children: [
-                      {
-                        name: 'Felidae',
-                        level: 'Family', // Added level property
-                        children: [
-                          {
-                            name: 'Panthera',
-                            level: 'Genus', // Added level property
-                            children: [
-                              {
-                                name: 'Panthera leo',
-                                level: 'Species', // Added level property
-                                children: [],
-                              },
-                              // ... other species under Panthera genus
-                            ],
-                          },
-                          // ... other genera under Felidae family
-                        ],
-                      },
-                      // ... other families under Carnivora order
-                    ],
-                  },
-                  // ... other orders under Mammalia class
-                ],
-              },
-              // ... other classes under Chordata phylum
-            ],
+          }, 
+          {
+            name: '节肢动物门',
+            level: 'Phylum', // Added level property
           },
           // ... other phyla under Animalia kingdom
         ],
       },
+      // animalClassification: null,
+      level: 'Kingdom',
     };
   },
-  
+  mounted() {
+    // Fetch data when the component is mounted
+    console.log('Edit clicked');
+    this.fetchAnimalClassification('Kingdom', 'Animalia'); 
+  },
   methods: {
     addNewType() {
       // Implement logic for adding a new type
@@ -79,6 +55,27 @@ export default {
     editClassification() {
       // Implement logic for editing classification
       console.log('Edit clicked');
+    },
+    fetchAnimalClassification(level, name) {
+      // Replace the URL with your actual API endpoint
+      const apiUrl = `http://localhost:9999/api/animal-classification/${level}/animalclassification${level}/list/`;
+
+
+      // Assuming your API expects a POST request with some data, modify the payload accordingly
+      const postData = {
+        // Your payload data here
+        "name" : name,
+      };
+
+      // Make a POST request to the API
+      axios.post(apiUrl, postData)
+        .then(response => {
+          // Handle the response and set the data to the component's state
+          this.animalClassification = response.data;
+        })
+        .catch(error => {
+          console.error('Error fetching animal classification data:', error);
+        });
     },
   },
 };

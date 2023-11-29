@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.animalia.animalclassification.animalclassificationservice.dao.mapper.AnimalClassificationSpeciesMapper">
+    <select id="selectAll" resultType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpecies">
+        SELECT * FROM Animal_Classification_Species;
+    </select>
+    <select id="selectById" resultType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpecies">
+        SELECT * FROM Animal_Classification_Species WHERE id = #{id};
+    </select>
+    <select id="selectByName" resultType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpecies">
+        SELECT * FROM Animal_Classification_Species WHERE name = #{name};
+    </select>
+    <insert id="insert" parameterType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpecies">
+        INSERT INTO Animal_Classification_Species (name, description, level, path)
+        VALUES (#{name}, #{description}, #{level}, #{path});
+    </insert>
+    <update id="update" parameterType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpecies">
+        UPDATE Animal_Classification_Species SET
+        name = #{name},
+        description = #{description},
+        level = #{level},
+        path = #{path}
+        WHERE id = #{id};
+    </update>
+    <delete id="delete" parameterType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpecies">
+        DELETE FROM Animal_Classification_Species WHERE id = #{id};
+    </delete>
+</mapper>
