@@ -1,5 +1,8 @@
 package com.animalia.animalclassification.animalclassificationservice.controller;
 
+import com.animalia.animalclassification.animalclassificationservice.common.AnimalClass;
+import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationKingdom;
+import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationPhylum;
 import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpecies;
 import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSubphylum;
 import com.animalia.animalclassification.animalclassificationservice.service.AnimalClassificationSpeciesService;
@@ -15,7 +18,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/animalclassificationspecies")
+@RequestMapping("/animalclassificationSpecies")
 public class AnimalClassificationSpeciesController {
 
 
@@ -49,4 +52,5 @@ public class AnimalClassificationSpeciesController {
     public void deleteAnimalClassificationSpeciesById(Integer id) {
         animalClassificationSpeciesService.deleteAnimalClassificationSpeciesById(id);
     }
+
 }

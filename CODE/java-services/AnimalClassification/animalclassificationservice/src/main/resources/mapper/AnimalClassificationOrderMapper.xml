@@ -10,7 +10,7 @@
         <result column="class_id" property="classId" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id, name, class_id
+        id, name, description, class_id, level, path
     </sql>
     <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select

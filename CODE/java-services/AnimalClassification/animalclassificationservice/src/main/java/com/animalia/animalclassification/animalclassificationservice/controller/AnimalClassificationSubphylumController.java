@@ -1,5 +1,9 @@
 package com.animalia.animalclassification.animalclassificationservice.controller;
 
+import com.animalia.animalclassification.animalclassificationservice.common.AnimalClass;
+import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationClass;
+import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationKingdom;
+import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationPhylum;
 import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSubphylum;
 import com.animalia.animalclassification.animalclassificationservice.service.AnimalClassificationSubphylumService;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +14,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/animalclassificationsubphylum")
+@RequestMapping("/animalclassificationSubphylum")
 public class AnimalClassificationSubphylumController {
 
     @Autowired
@@ -41,5 +45,12 @@ public class AnimalClassificationSubphylumController {
         AnimalClassificationSubphylum animalClassificationSubphylum= new AnimalClassificationSubphylum();
         animalClassificationSubphylum.setId(id);
         animalClassificationSubphylumService.deleteAnimalClassificationSubphylumById(animalClassificationSubphylum);
+    }
+
+    @PostMapping("/list")
+    @ResponseBody
+    public List<AnimalClassificationClass> getListAnimalClassificationSubphylum(@RequestBody AnimalClassificationSubphylum animalClassificationSubphylum) {
+//        System.out.println(animalClassificationKingdom.getName());
+        return animalClassificationSubphylumService.getListAnimalClassificationSubphylum(AnimalClass.SUBPHYLUM, animalClassificationSubphylum.getName());
     }
 }

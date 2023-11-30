@@ -1,7 +1,7 @@
 package com.animalia.animalclassification.animalclassificationservice.controller;
 
-import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationGenus;
-import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSubphylum;
+import com.animalia.animalclassification.animalclassificationservice.common.AnimalClass;
+import com.animalia.animalclassification.animalclassificationservice.entity.*;
 import com.animalia.animalclassification.animalclassificationservice.service.AnimalClassificationGenusService;
 import com.animalia.animalclassification.animalclassificationservice.service.AnimalClassificationSubphylumService;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/animalclassificationgenus")
+@RequestMapping("/animalclassificationGenus")
 public class AnimalClassificationGenusController {
 
     @Autowired
@@ -42,5 +42,12 @@ public class AnimalClassificationGenusController {
     @DeleteMapping("/delete/{id}")
     public void deleteAnimalClassificationGenusById(Integer id) {
         animalClassificationGenusService.deleteAnimalClassificationGenusById(id);
+    }
+
+    @PostMapping("/list")
+    @ResponseBody
+    public List<AnimalClassificationSpecies> getListAnimalClassificationGenus(@RequestBody AnimalClassificationGenus animalClassificationGenus) {
+//        System.out.println(animalClassificationKingdom.getName());
+        return animalClassificationGenusService.getListAnimalClassificationGenus(AnimalClass.GENUS, animalClassificationGenus.getName());
     }
 }

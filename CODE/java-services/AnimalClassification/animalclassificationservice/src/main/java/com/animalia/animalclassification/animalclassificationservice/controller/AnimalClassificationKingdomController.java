@@ -3,7 +3,10 @@ package com.animalia.animalclassification.animalclassificationservice.controller
 /**
  * 生成 entity AnimalClassificationKingdom 的 controller
  */
+import com.animalia.animalclassification.animalclassificationservice.common.AnimalClass;
 import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationKingdom;
+import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationPhylum;
+import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSubphylum;
 import com.animalia.animalclassification.animalclassificationservice.service.AnimalClassificationKingdomService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +31,9 @@ public class AnimalClassificationKingdomController {
 
     @PostMapping("/list")
     @ResponseBody
-    public List<AnimalClassificationKingdom> getListAnimalClassificationKingdom( @RequestBody AnimalClassificationKingdom animalClassificationKingdom) {
-        System.out.println(animalClassificationKingdom.getName());
-        return animalClassificationKingdomService.getAllAnimalClassificationKingdom();
+    public List<AnimalClassificationPhylum> getListAnimalClassificationKingdom(@RequestBody AnimalClassificationKingdom animalClassificationKingdom) {
+//        System.out.println(animalClassificationKingdom.getName());
+        return animalClassificationKingdomService.getListAnimalClassificationKingdom(AnimalClass.KINGDOM, animalClassificationKingdom.getName());
     }
 
 

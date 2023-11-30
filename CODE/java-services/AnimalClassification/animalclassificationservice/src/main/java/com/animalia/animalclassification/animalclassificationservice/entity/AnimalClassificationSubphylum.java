@@ -11,7 +11,7 @@ public class AnimalClassificationSubphylum  {
     private Integer id;
     private String name;
     private String description;
-    private Integer phylum_id;
-    private Integer level;
+    private Integer phylumId;
+    private String level;
     private String path;
 }

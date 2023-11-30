@@ -73,3 +73,27 @@ CREATE TABLE Animal_Classification_Species (
     level INT NOT NULL DEFAULT 8 COMMENT '层级，表示所处级别',
     path VARCHAR(255) NOT NULL DEFAULT '/' COMMENT '完整路径，表示类别在层级结构中的位置'
 ) COMMENT '动物分类 - 种';
+
+
+CREATE TABLE Animal_Classification_Species_Entity (
+                                                      Species_id INT   COMMENT '种的ID',
+                                                      id INT PRIMARY KEY AUTO_INCREMENT COMMENT '信息实体的ID',
+                                                      entity_type VARCHAR(255) NOT NULL   COMMENT '信息实体的类型，比如动物的基本信息'
+) COMMENT '动物分类 - 种的信息实体';
+
+
+CREATE TABLE Animal_Classification_Species_Attribute (
+                                                         id INT PRIMARY KEY AUTO_INCREMENT,
+                                                         entity_id INT NOT NULL COMMENT  '信息实体的ID' ，
+                                                             attribute_name VARCHAR(255) NOT NULL COMMENT '属性名称',
+                                                         data_type VARCHAR(50) NOT NULL COMMENT '属性的数据类型'
+) COMMENT '动物分类 - 种的属性';
+
+
+CREATE TABLE Animal_Classification_Species_Value (
+                                                     id INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
+                                                     entity_id INT NOT NULL COMMENT  '信息实体的ID' ，,
+                                                     attribute_id INT NOT NULL COMMENT '属性的ID',
+                                                     value TEXT COMMENT '属性的值'
+) COMMENT '动物分类 - 种的属性值';
+

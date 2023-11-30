@@ -1,7 +1,7 @@
 package com.animalia.animalclassification.animalclassificationservice.controller;
 
- import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationClass;
- import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationFamily;
+ import com.animalia.animalclassification.animalclassificationservice.common.AnimalClass;
+ import com.animalia.animalclassification.animalclassificationservice.entity.*;
  import com.animalia.animalclassification.animalclassificationservice.service.AnimalClassificationFamilyService;
  import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Slf4j
 @RestController
-@RequestMapping("/animalclassificationfamily")
+@RequestMapping("/animalclassificationFamily")
 public class AnimalClassificationFamilyController {
 
     @Autowired
@@ -42,4 +42,10 @@ public class AnimalClassificationFamilyController {
         animalClassificationFamilyService.deleteAnimalClassificationFamilyById(id);
     }
 
+    @PostMapping("/list")
+    @ResponseBody
+    public List<AnimalClassificationGenus> getListAnimalClassificationFamily(@RequestBody AnimalClassificationFamily animalClassificationFamily) {
+//        System.out.println(animalClassificationKingdom.getName());
+        return animalClassificationFamilyService.getListAnimalClassificationFamily(AnimalClass.FAMILY, animalClassificationFamily.getName());
+    }
 }

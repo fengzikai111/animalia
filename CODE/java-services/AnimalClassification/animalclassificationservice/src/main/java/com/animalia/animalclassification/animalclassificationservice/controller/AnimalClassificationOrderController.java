@@ -4,8 +4,11 @@ package com.animalia.animalclassification.animalclassificationservice.controller
  * 生成 entity AnimalClassificationKingdom 的 controller
  */
 
+import com.animalia.animalclassification.animalclassificationservice.common.AnimalClass;
+import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationFamily;
 import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationKingdom;
 import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationOrder;
+import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationPhylum;
 import com.animalia.animalclassification.animalclassificationservice.service.AnimalClassificationKingdomService;
 import com.animalia.animalclassification.animalclassificationservice.service.AnimalClassificationOrderService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +19,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/animalclassificationorder")
+@RequestMapping("/animalclassificationOrder")
 public class AnimalClassificationOrderController {
 
     @Autowired
@@ -44,6 +47,13 @@ public class AnimalClassificationOrderController {
     @DeleteMapping("/delete/{id}")
     public void deleteAnimalClassificationOrderById(@PathVariable Integer id) {
         animalClassificationOrderService.deleteAnimalClassificationOrderById(id);
+    }
+
+    @PostMapping("/list")
+    @ResponseBody
+    public List<AnimalClassificationFamily> getListAnimalClassificationOrder(@RequestBody AnimalClassificationOrder animalClassificationOrder) {
+//        System.out.println(animalClassificationKingdom.getName());
+        return animalClassificationOrderService.getListAnimalClassificationOrder(AnimalClass.ORDER, animalClassificationOrder.getName());
     }
 }
 
