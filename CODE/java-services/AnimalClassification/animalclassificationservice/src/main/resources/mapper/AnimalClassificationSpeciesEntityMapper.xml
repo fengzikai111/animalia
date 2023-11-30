@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.animalia.animalclassification.animalclassificationservice.dao.mapper.AnimalClassificationSpeciesEntityMapper">
+
+<!--    AnimalClassificationSpeciesEntity selectById(Integer id);-->
+<!--    AnimalClassificationSpeciesEntity selectBySpeciesId(Integer speciesId);-->
+<!--    int insert(AnimalClassificationSpeciesEntity animalClassificationSpeciesEntity);-->
+<!--    Integer update(AnimalClassificationSpeciesEntity animalClassificationSpeciesEntity);-->
+<!--    Integer delete(AnimalClassificationSpeciesEntity animalClassificationSpeciesEntity);-->
+<!--    //selectAll-->
+<!--    List<AnimalClassificationSpeciesEntity> selectAll();-->
+
+<!--    CREATE TABLE Animal_Classification_Species_Entity (-->
+<!--    Species_id INT   COMMENT '种的ID',-->
+<!--    id INT PRIMARY KEY AUTO_INCREMENT COMMENT '信息实体的ID',-->
+<!--    entity_type VARCHAR(255) NOT NULL   COMMENT '信息实体的类型，比如动物的基本信息'-->
+<!--    ) COMMENT '动物分类 - 种的信息实体';-->
+
+
+    <resultMap id="BaseResultMap" type="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpeciesEntity">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="Species_id" jdbcType="INTEGER" property="speciesId" />
+        <result column="entity_type" jdbcType="VARCHAR" property="entityType" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, Species_id, entity_type
+    </sql>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM Animal_Classification_Species_Entity
+        WHERE id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectBySpeciesId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM Animal_Classification_Species_Entity
+        WHERE Species_id = #{speciesId,jdbcType=INTEGER}
+    </select>
+
+    <insert id="insert" parameterType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpeciesEntity">
+        INSERT INTO Animal_Classification_Species_Entity (Species_id, entity_type)
+        VALUES (#{speciesId,jdbcType=INTEGER}, #{entityType,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="update" parameterType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpeciesEntity">
+        UPDATE Animal_Classification_Species_Entity
+        SET Species_id = #{speciesId,jdbcType=INTEGER},
+        entity_type = #{entityType,jdbcType=VARCHAR}
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <delete id="delete" parameterType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpeciesEntity">
+        DELETE FROM Animal_Classification_Species_Entity
+        WHERE id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM Animal_Classification_Species_Entity
+    </select>
+
+</mapper>

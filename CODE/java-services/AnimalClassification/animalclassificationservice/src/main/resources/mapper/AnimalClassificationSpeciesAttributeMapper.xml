@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.animalia.animalclassification.animalclassificationservice.dao.mapper.AnimalClassificationSpeciesAttributeMapper">
+
+    <resultMap id="animalClassificationSpeciesAttributeResultMap" type="com.animalia.animalclassification.animalclassificationservice.model.AnimalClassificationSpeciesAttribute">
+        <id property="id" column="id"/>
+        <result property="entityId" column="entity_id"/>
+        <result property="attributeId" column="attribute_id"/>
+        <result property="attributeValue" column="attribute_value"/>
+    </resultMap>
+
+<!--    AnimalClassificationSpeciesAttribute selectById(Integer id);-->
+<!--    AnimalClassificationSpeciesAttribute selectBySpeciesId(Integer speciesId);-->
+<!--    int insert(AnimalClassificationSpeciesAttribute animalClassificationSpeciesAttribute);-->
+<!--    Integer update(AnimalClassificationSpeciesAttribute animalClassificationSpeciesAttribute);-->
+<!--    Integer delete(AnimalClassificationSpeciesAttribute animalClassificationSpeciesAttribute);-->
+<!--    //selectAll-->
+<!--    List<AnimalClassificationSpeciesAttribute> selectAll();-->
+
+    <select id="selectById" resultMap="animalClassificationSpeciesAttributeResultMap">
+        SELECT * FROM animal_classification_species_attribute WHERE id = #{id}
+    </select>
+
+    <select id="selectByEntityId" resultMap="animalClassificationSpeciesAttributeResultMap">
+        SELECT * FROM animal_classification_species_attribute WHERE entity_id = #{entityId}
+    </select>
+
+    <insert id="insert" parameterType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpeciesAttribute">
+        INSERT INTO animal_classification_species_attribute (entity_id, attribute_id, attribute_value)
+        VALUES (#{entityId}, #{attributeId}, #{attributeValue})
+    </insert>
+
+    <update id="update" parameterType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpeciesAttribute">
+        UPDATE animal_classification_species_attribute
+        SET entity_id = #{entityId}, attribute_id = #{attributeId}, attribute_value = #{attributeValue}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="com.animalia.animalclassification.animalclassificationservice.model.AnimalClassificationSpeciesAttribute">
+        DELETE FROM animal_classification_species_attribute WHERE id = #{id}
+    </delete>
+
+    <select id="selectAll" resultMap="animalClassificationSpeciesAttributeResultMap">
+        SELECT * FROM animal_classification_species_attribute
+    </select>
+
+</mapper>
