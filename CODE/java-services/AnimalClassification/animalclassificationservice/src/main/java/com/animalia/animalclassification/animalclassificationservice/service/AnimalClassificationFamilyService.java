@@ -42,4 +42,8 @@ public class AnimalClassificationFamilyService {
     public List<AnimalClassificationGenus> getListAnimalClassificationFamily(AnimalClass family, String name) {
         return animalClassificationGenusDao.getAllAnimalClassificationGenus();
     }
+
+    public AnimalClassificationFamily getAnimalClassificationFamilyByName(String name) {
+        return animalClassificationFamilyDao.getAnimalClassificationFamilyByName(name);
+    }
 }

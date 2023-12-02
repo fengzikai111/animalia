@@ -34,4 +34,7 @@ public class AnimalClassificationGenusDao {
         return animalClassificationGenusMapper.selectById(   id     );
     }
 
+    public AnimalClassificationGenus getAnimalClassificationGenusByName(String name) {
+        return animalClassificationGenusMapper.selectByName(name);
+    }
 }

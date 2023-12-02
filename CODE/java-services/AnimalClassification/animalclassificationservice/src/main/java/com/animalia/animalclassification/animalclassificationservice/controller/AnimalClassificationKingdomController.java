@@ -42,6 +42,11 @@ public class AnimalClassificationKingdomController {
         return animalClassificationKingdomService.getAnimalClassificationKingdomById(id);
     }
 
+    @GetMapping("/name/{name}")
+    public AnimalClassificationKingdom getAnimalClassificationKingdomByName(@PathVariable String name) {
+        return animalClassificationKingdomService.getAnimalClassificationKingdomByName(name);
+    }
+
     @PostMapping("/add")
     public void addAnimalClassificationKingdom(@RequestBody AnimalClassificationKingdom animalClassificationKingdom) {
         animalClassificationKingdomService.addAnimalClassificationKingdom(animalClassificationKingdom);

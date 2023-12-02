@@ -29,6 +29,11 @@ public class AnimalClassificationPhylumController {
         return animalClassificationPhylumService.getAnimalClassificationPhylumById(id);
     }
 
+    @GetMapping("/name/{name}")
+    public AnimalClassificationPhylum getAnimalClassificationPhylumByName(@PathVariable String name) {
+        return animalClassificationPhylumService.getAnimalClassificationPhylumByName(name);
+    }
+
     @PostMapping("/add")
     public void addAnimalClassificationPhylum(@RequestBody AnimalClassificationPhylum animalClassificationPhylum) {
         animalClassificationPhylumService.addAnimalClassificationPhylum(animalClassificationPhylum);

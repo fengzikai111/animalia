@@ -1,10 +1,7 @@
 package com.animalia.animalclassification.animalclassificationservice.controller;
 
 import com.animalia.animalclassification.animalclassificationservice.common.AnimalClass;
-import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationKingdom;
-import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationPhylum;
-import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpecies;
-import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSubphylum;
+import com.animalia.animalclassification.animalclassificationservice.entity.*;
 import com.animalia.animalclassification.animalclassificationservice.service.AnimalClassificationSpeciesService;
 import com.animalia.animalclassification.animalclassificationservice.service.AnimalClassificationSubphylumService;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +35,11 @@ public class AnimalClassificationSpeciesController {
         return animalClassificationSpeciesService.getAnimalClassificationSpeciesById(id);
     }
 
+    @GetMapping("/name/{name}")
+    public AnimalClassificationSpecies getAnimalClassificationSpeciesByName(@PathVariable String name) {
+        return animalClassificationSpeciesService.getAnimalClassificationSpeciesByName(name);
+    }
+
     @PostMapping("/add")
     public void addAnimalClassificationSpecies(AnimalClassificationSpecies animalClassificationSpecies) {
         animalClassificationSpeciesService.addAnimalClassificationSpecies(animalClassificationSpecies);
@@ -51,6 +53,11 @@ public class AnimalClassificationSpeciesController {
     @DeleteMapping("/delete/{id}")
     public void deleteAnimalClassificationSpeciesById(Integer id) {
         animalClassificationSpeciesService.deleteAnimalClassificationSpeciesById(id);
+    }
+
+    @GetMapping("/animalclassificationspecies/{id}")
+    public AnimalClassificationSpeciesVO queryAnimalClassificationSpecies(@PathVariable Integer id) {
+        return animalClassificationSpeciesService.queryAnimalClassificationSpecies(id);
     }
 
 }

@@ -33,4 +33,7 @@ public class AnimalClassificationClassDao {
         return animalClassificationClassMapper.selectAll();
     }
 
+    public AnimalClassificationClass getAnimalClassificationClassByName(String name) {
+        return animalClassificationClassMapper.selectByName(name);
+    }
 }

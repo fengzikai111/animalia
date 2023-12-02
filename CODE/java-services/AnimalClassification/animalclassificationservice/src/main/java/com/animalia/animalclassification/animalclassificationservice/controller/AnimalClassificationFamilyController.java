@@ -28,6 +28,11 @@ public class AnimalClassificationFamilyController {
         return animalClassificationFamilyService.getAnimalClassificationFamilyById(id);
     }
 
+    @GetMapping("/name/{name}")
+    public AnimalClassificationFamily getAnimalClassificationFamilyByName(@PathVariable String name) {
+        return animalClassificationFamilyService.getAnimalClassificationFamilyByName(name);
+    }
+
     @PostMapping("/add")
     public void addAnimalClassificationFamily(AnimalClassificationFamily animalClassificationFamily) {
         animalClassificationFamilyService.addAnimalClassificationFamily(animalClassificationFamily);

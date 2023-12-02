@@ -1,57 +1,62 @@
 <template>
-    <div>
-      <h1>{{ wolfInfo.entity_type }}</h1>
-      <div v-for="(attribute, key) in wolfInfo.attributes" :key="key">
-        <strong>{{ key }}:</strong>
-        <component :is="getComponentForType(attribute.type)" :values="attribute.values"></component>
+  <div>
+    <div v-for="(entity, index) in wolfInfo.entities" :key="index">
+      <h2>{{ entity.entityType }}</h2>
+      <div v-for="(attribute, i) in entity.attributes" :key="i">
+        <h3>{{ attribute.attributeName }}</h3>
+        <TextDisplay></TextDisplay>
+        <component :is="getComponentForType(attribute.type)" :values="attribute.values" ></component>
       </div>
     </div>
-  </template>
+  </div>
+</template>
   
-  <script>
-  import axios from 'axios';
-  import TextDisplay from './TextDisplay.vue';
-  import NumberDisplay from './NumberDisplay.vue';
-  // ...import other display components
-  
-  export default {
+<script>
+import axios from 'axios';
+import TextDisplay from './TextDisplay.vue';
+import LongTextDisplay from './LongTextDisplay.vue'; 
+
+export default {
     components: {
-      TextDisplay,
-      NumberDisplay,
-      // ...other display components
-    },
-    data() {
-      return {
-        wolfInfo: {
-          entity_type: '',
-          attributes: {}
-        }
-      };
-    },
-    methods: {
-      async getWolfInfo() {
-        try {
-          const response = await axios.get('/api/path/to/wolf/info');
-          this.wolfInfo.entity_type = response.data.entity_type;
-          this.wolfInfo.attributes = response.data.attributes;
-        } catch (error) {
-          console.error(error);
-        }
-      },
-      getComponentForType(type) {
-        switch (type) {
-          case 'VARCHAR':
-            return 'TextDisplay';
-          case 'INT':
-            return 'NumberDisplay';
-          // ...other cases for other types
-          default:
-            return 'TextDisplay';
-        }
+    TextDisplay,
+    LongTextDisplay
+  },
+  data() {
+    return {
+      wolfInfo: {
+        entities: []
+      }
+    };
+  },
+  methods: {
+    async getWolfInfo() {
+      try {
+        const response = await axios.get('http://localhost:9999/api/animal-classification/animalclassificationSpecies/animalclassificationspecies/1');
+        this.wolfInfo.entities = response.data.entities;
+      } catch (error) {
+        console.error(error);
       }
     },
-    created() {
-      this.getWolfInfo();
+    getComponentForType(type) {
+      switch (type) {
+        case 'VARCHAR':
+          return 'TextDisplay';
+        case 'INT':
+          return 'NumberDisplay';
+        case 'TEXT':
+          return 'LongTextDisplay'; // Assuming you have a LongTextDisplay component for TEXT type
+        // ...other cases for other types
+        default:
+          return 'TextDisplay';
+      }
     }
-  };
-  </script>
+  },
+  created() {
+    this.getWolfInfo();
+  }
+};
+</script>
+
+<style scoped>
+  /* Your styles here */
+</style>

@@ -30,6 +30,11 @@ public class AnimalClassificationSubphylumController {
         return animalClassificationSubphylumService.getAnimalClassificationSubphylumById(id);
     }
 
+    @GetMapping("/name/{name}")
+    public AnimalClassificationSubphylum getAnimalClassificationSubphylumByName(@PathVariable String name) {
+        return animalClassificationSubphylumService.getAnimalClassificationSubphylumByName(name);
+    }
+
     @PostMapping("/add")
     public void addAnimalClassificationSubphylum(AnimalClassificationSubphylum animalClassificationSubphylum) {
         animalClassificationSubphylumService.addAnimalClassificationSubphylum(animalClassificationSubphylum);

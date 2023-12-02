@@ -36,4 +36,9 @@ public class AnimalClassificationSubphylumDao {
         System.out.println("AnimalClassificationSubphylumDao.deleteAnimalClassificationSubphylumById() called");
         animalClassificationSubphylumMapper.delete(id);
     }
+
+    public AnimalClassificationSubphylum getAnimalClassificationSubphylumByName(String name) {
+        System.out.println("AnimalClassificationSubphylumDao.getAnimalClassificationSubphylumByName() called");
+        return animalClassificationSubphylumMapper.selectByName(name);
+    }
 }

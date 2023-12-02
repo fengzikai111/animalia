@@ -42,4 +42,8 @@ public class AnimalClassificationOrderService {
     public List<AnimalClassificationFamily> getListAnimalClassificationOrder(AnimalClass order, String name) {
         return animalClassificationFamilyDao.getAllAnimalClassificationFamily();
     }
+
+    public AnimalClassificationOrder getAnimalClassificationOrderByName(String name) {
+        return animalClassificationOrderDao.getAnimalClassificationOrderByName(name);
+    }
 }

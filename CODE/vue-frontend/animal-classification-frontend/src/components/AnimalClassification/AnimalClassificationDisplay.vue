@@ -4,16 +4,21 @@
     <div class="header">
       <h2>动物种类</h2>
       <div class="buttons">
-        <button @click="addNewType">Add New</button>
-        <button @click="editClassification">Edit</button>
+        <button @click="addNewType">新增</button>
+        <button @click="editClassification">编辑</button>
       </div>
     </div>
-    <AnimalType :type="animalClassification" level="Kingdom" />
+    <hr class="divider" />
+    <div class="animal-classification-display-context"> 
+    <AnimalType initialLevel="Kingdom"  @name-clicked="handleNameHovered"  :type="animalClassification" level="Kingdom" />
+    <AnimalData :selectedAnimal="selectedAnimal"  />
+   </div>
   </div>
 </template>
 
 <script>
 import AnimalType from './AnimalType.vue';
+import AnimalData from './AnimalData.vue';
 import axios from 'axios';
 import qs from 'qs'
 
@@ -27,7 +32,7 @@ class Classification {
 
 export default {
   components: {
-    AnimalType,
+    AnimalType, AnimalData
   },
   data() {
     return {
@@ -38,7 +43,7 @@ export default {
           // ... other phyla under Animalia kingdom
         ],
       },
-    
+      selectedAnimal: null,
       animalClassification1:{
   "name": "动物界",
   "level": "Kingdom",
@@ -62,7 +67,7 @@ export default {
   },
   mounted() {
     // Fetch data when the component is mounted
-    console.log('Edit clicked');
+    console.log('修改');
     let level = this.$route.params.level ? this.$route.params.level : 'Kingdom';
     let name = this.$route.params.name ? this.$route.params.name : '动物界';
     // this.fetchAnimalClassification('Kingdom', '动物界'); 
@@ -92,6 +97,9 @@ export default {
     editClassification() {
       // Implement logic for editing classification
       console.log('Edit clicked');
+    },
+    handleNameHovered(type) {
+      this.selectedAnimal = type; 
     },
     fetchAnimalClassification(level, name) {
       // Replace the URL with your actual API endpoint
@@ -134,15 +142,28 @@ export default {
 .animal-classification-display {
   padding: 20px;
 }
+.animal-classification-display-context {
+  display: flex; /* Use flexbox to layout the children horizontally */
+}
+
+.animal-classification-display-context > :first-child {
+  flex: 2; /* The first child takes up 6/7 of the space */
+}
+
+.animal-classification-display-context > :last-child {
+  flex: 4; /* The last child takes up 1/7 of the space */
+}
 
 .header {
+  margin-top: 0;
+  height: 25px; /* Set the height to 100px */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .buttons {
@@ -151,5 +172,11 @@ h2 {
 
 button {
   margin-left: 10px;
+}
+
+.divider {
+  border: none; /* Remove default border */
+  height: 1px; /* Set the height of the divider */
+  background: linear-gradient(to right, rgb(233, 228, 231), rgb(86, 84, 85)); /* Set a gradient background */
 }
 </style>

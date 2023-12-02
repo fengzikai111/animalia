@@ -37,4 +37,8 @@ public class AnimalClassificationSpeciesDao {
         animalClassificationSpeciesMapper.delete(animalClassificationSpecies);
         System.out.println("AnimalClassificationSpeciesDao.deleteAnimalClassificationSpeciesById() called");
     }
+
+    public AnimalClassificationSpecies getAnimalClassificationSpeciesByName(String name) {
+        return animalClassificationSpeciesMapper.selectByName(name);
+    }
 }

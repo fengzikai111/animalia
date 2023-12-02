@@ -43,6 +43,10 @@ public class AnimalClassificationClassService {
     public List<AnimalClassificationOrder> getListAnimalClassificationClass(AnimalClass animalClass, String name) {
         return animalClassificationOrderDao.getAllAnimalClassificationOrder();
     }
+
+    public AnimalClassificationClass getAnimalClassificationClassByName(String name) {
+        return animalClassificationClassDao.getAnimalClassificationClassByName(name);
+    }
 }
 
 

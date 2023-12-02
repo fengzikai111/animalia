@@ -7,6 +7,7 @@ import Login from '../views/Login.vue';
 import CreateCategory from '../components/AnimalClassification/CreateCategory.vue';
 import AnimalClassificationDisplay from '../components/AnimalClassification/AnimalClassificationDisplay.vue';
 import AnimalClassificationTable from '../components/AnimalClassification/AnimalClassificationTable.vue';
+import SpeciesDisplay from '../components/Species/SpeciesDisplay.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -24,6 +25,10 @@ const router = createRouter({
     },
     { path: '/animal-classification-table', component: AnimalClassificationTable },    
     // Add more routes as needed
+    // add route to SpeciesDisplay.vue配置route 代码
+    { path: '/species-display', component: SpeciesDisplay },
+    
+
   ],
 });
 

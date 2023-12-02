@@ -49,10 +49,11 @@ public class AnimalClassificationSpeciesService {
     @Autowired
     private AnimalClassificationSpeciesAttributeDao animalClassificationSpeciesAttributeDao;
 
-    public AnimalClassificationSpeciesVO queryAnimalClassificationSpecies(AnimalClassificationSpecies animalClassificationSpecies) {
+
+    public AnimalClassificationSpeciesVO queryAnimalClassificationSpecies( Integer id) {
 
         // 1. 获取Species_id
-        Integer species_id = animalClassificationSpecies.getId();
+        Integer species_id =id;
         // 根据Species_id获取所有entity
         List<AnimalClassificationSpeciesEntity> animalClassificationSpeciesEntityList = animalClassificationSpeciesEntityDao.getAnimalClassificationSpeciesEntityBySpeciesId(species_id);
         //创建封装VO对象
@@ -67,7 +68,8 @@ public class AnimalClassificationSpeciesService {
             List<AnimalClassificationSpeciesAttributeVO> animalClassificationSpeciesAttributeVOList = new ArrayList<>();
             for (AnimalClassificationSpeciesAttribute animalClassificationSpeciesAttribute : animalClassificationSpeciesAttributeList) {
                 AnimalClassificationSpeciesAttributeVO animalClassificationSpeciesAttributeVO = new AnimalClassificationSpeciesAttributeVO();
-
+                animalClassificationSpeciesAttributeVO.setType(animalClassificationSpeciesAttribute.getDataType());
+                animalClassificationSpeciesAttributeVO.setAttributeName(animalClassificationSpeciesAttribute.getAttributeName());
                 List<AnimalClassificationSpeciesValue> animalClassificationSpeciesValueList = animalClassificationSpeciesValueDao.getAnimalClassificationSpeciesValueByAttributeId(animalClassificationSpeciesAttribute.getId());
                 List<String> animalClassificationSpeciesValueVOList = new ArrayList<>();
                 for (AnimalClassificationSpeciesValue animalClassificationSpeciesValue : animalClassificationSpeciesValueList) {
@@ -84,5 +86,9 @@ public class AnimalClassificationSpeciesService {
         }
         animalClassificationSpeciesVO.setEntities(animalClassificationSpeciesEntityVOList);
         return animalClassificationSpeciesVO;
+    }
+
+    public AnimalClassificationSpecies getAnimalClassificationSpeciesByName(String name) {
+        return animalClassificationSpeciesDao.getAnimalClassificationSpeciesByName(name);
     }
 }

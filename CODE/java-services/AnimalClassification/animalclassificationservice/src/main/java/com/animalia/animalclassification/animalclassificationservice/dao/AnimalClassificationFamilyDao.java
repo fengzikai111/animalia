@@ -36,4 +36,8 @@ public class AnimalClassificationFamilyDao {
         animalClassificationFamily.setId(id);
         animalClassificationFamilyMapper.delete(animalClassificationFamily);
     }
+
+    public AnimalClassificationFamily getAnimalClassificationFamilyByName(String name) {
+        return animalClassificationFamilyMapper.selectByName(name);
+    }
 }

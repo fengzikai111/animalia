@@ -35,6 +35,12 @@ public class AnimalClassificationOrderController {
     public AnimalClassificationOrder getAnimalClassificationOrderById(@PathVariable Integer id) {
         return animalClassificationOrderService.getAnimalClassificationOrderById(id);
     }
+
+    @GetMapping("/name/{name}")
+    public AnimalClassificationOrder getAnimalClassificationOrderByName(@PathVariable String name) {
+        return animalClassificationOrderService.getAnimalClassificationOrderByName(name);
+    }
+
     @PostMapping("/add")
     public void addAnimalClassificationOrder(@RequestBody AnimalClassificationOrder animalClassificationOrder) {
         animalClassificationOrderService.addAnimalClassificationOrder(animalClassificationOrder);

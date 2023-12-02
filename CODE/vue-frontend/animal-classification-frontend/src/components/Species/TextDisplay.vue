@@ -1,26 +1,26 @@
 <template>
   <div>
-    <h1>{{ title }}</h1>
-    <p>{{ text }}</p>
+    <p v-for="(value, index) in values" :key="index">
+      {{ value }}
+    </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TextDisplay',
   props: {
-    title: {
-      type: String,
-      required: true
-    },
-    text: {
-      type: String,
-      required: true
+    values: {
+      type: Array,
+      default: () => []
     }
   }
-}
+};
 </script>
 
 <style scoped>
-/* Add your component styles here */
+p {
+  color: #333; /* Dark text color for visibility */
+  font-size: 16px; /* Increase font size for visibility */
+  margin: 10px 0; /* Add some margin around each paragraph */
+}
 </style>

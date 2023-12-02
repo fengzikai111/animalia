@@ -17,5 +17,6 @@ public class AnimalClassificationPhylum {
     private Integer kingdomId;
     private String level;
     private String path;
+    private String summary;
 
 }

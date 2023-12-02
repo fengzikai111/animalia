@@ -14,5 +14,6 @@ public class AnimalClassificationOrder  {
     private Integer classId;
     private String level;
     private String path;
+    private String summary;
 }
 

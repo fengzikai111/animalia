@@ -14,4 +14,5 @@ public class AnimalClassificationGenus {
     private Integer family_id;
     private String level;
     private String path;
+    private String summary;
 }

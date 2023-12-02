@@ -3,9 +3,11 @@ package com.animalia.animalclassification.animalclassificationservice.dao.mapper
 import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpeciesAttribute;
 import com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpeciesEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface AnimalClassificationSpeciesAttributeMapper extends BaseMapper<AnimalClassificationSpeciesAttribute> {
 
 //    AnimalClassificationSpeciesEntity selectById(Integer id);

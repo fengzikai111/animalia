@@ -3,15 +3,15 @@
   <div class="top-bar">
     <div class="left-content">
       <!-- Your logo and user info here -->
-      <div class="logo">Your Logo</div>
+      <div class="logo">动物信息知识库</div>
     </div>
     <div class="right-content">
       <!-- Registration and login navigation links -->
-      <div class="user-info">User Info</div>
+      <div class="user-info">游客</div>
       
-      <router-link to="/register">Register</router-link>
+      <router-link to="/register">注册</router-link>
       <!-- 关联到Login.vue -->
-      <router-link to="/login">Login</router-link>
+      <router-link to="/login">登录</router-link>
       <!-- You can customize these links and styles as needed -->
     </div>
   </div>

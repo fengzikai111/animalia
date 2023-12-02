@@ -45,5 +45,9 @@ public class AnimalClassificationKingdomService {
     public List<AnimalClassificationPhylum> getListAnimalClassificationKingdom(AnimalClass kingdom, String name) {
         return animalClassificationPhylumDao.getAllAnimalClassificationPhylum();
     }
+
+    public AnimalClassificationKingdom getAnimalClassificationKingdomByName(String name) {
+        return animalClassificationKingdomDao.getAnimalClassificationKingdomByName(name);
+    }
 }
 

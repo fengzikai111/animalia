@@ -41,4 +41,8 @@ public class AnimalClassificationPhylumService {
     public List<AnimalClassificationSubphylum> getListAnimalClassificationPhylum(String name) {
        return animalClassificationSubphylumDao.getAllAnimalClassificationSubphylum();
     }
+
+    public AnimalClassificationPhylum getAnimalClassificationPhylumByName(String name) {
+        return animalClassificationPhylumDao.getAnimalClassificationPhylumByName(name);
+    }
 }

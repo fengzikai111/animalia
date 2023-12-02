@@ -32,4 +32,8 @@ public class AnimalClassificationKingdomDao {
 
     public void deleteAnimalClassificationKingdomById(Integer id) {
     }
+
+    public AnimalClassificationKingdom getAnimalClassificationKingdomByName(String name) {
+        return animalClassificationKingdomMapper.selectByName(name);
+    }
 }

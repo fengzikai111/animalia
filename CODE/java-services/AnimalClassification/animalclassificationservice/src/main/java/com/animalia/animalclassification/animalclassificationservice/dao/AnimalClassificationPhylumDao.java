@@ -33,4 +33,8 @@ public class AnimalClassificationPhylumDao {
     public List<AnimalClassificationPhylum> getAllAnimalClassificationPhylum() {
         return animalClassificationPhylumMapper.selectAll();
     }
+
+    public AnimalClassificationPhylum getAnimalClassificationPhylumByName(String name) {
+        return animalClassificationPhylumMapper.selectByName(name);
+    }
 }

@@ -41,4 +41,8 @@ public class AnimalClassificationOrderDao {
     }
 
 
+    public AnimalClassificationOrder getAnimalClassificationOrderByName(String name) {
+        System.out.println("AnimalClassificationOrderDao.getAnimalClassificationOrderByName() called");
+        return animalClassificationOrderMapper.selectByName(name);
+    }
 }

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.animalia.animalclassification.animalclassificationservice.dao.mapper.AnimalClassificationSpeciesValueMapper">
 
-        <resultMap id="animalClassificationSpeciesValueResultMap" type="com.animalia.animalclassification.animalclassificationservice.model.AnimalClassificationSpeciesValue">
+        <resultMap id="animalClassificationSpeciesValueResultMap" type="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpeciesValue">
             <id property="id" column="id"/>
             <result property="attributeId" column="attribute_id"/>
             <result property="valueId" column="value_id"/>
@@ -25,18 +25,18 @@
         SELECT * FROM animal_classification_species_value WHERE attribute_id = #{attributeId}
     </select>
 
-    <insert id="insert" parameterType="com.animalia.animalclassification.animalclassificationservice.model.AnimalClassificationSpeciesValue">
+    <insert id="insert" parameterType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpeciesValue">
         INSERT INTO animal_classification_species_value (attribute_id, value_id)
         VALUES (#{attributeId}, #{valueId})
     </insert>
 
-    <update id="update" parameterType="com.animalia.animalclassification.animalclassificationservice.model.AnimalClassificationSpeciesValue">
+    <update id="update" parameterType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpeciesValue">
         UPDATE animal_classification_species_value
         SET attribute_id = #{attributeId}, value_id = #{valueId}
         WHERE id = #{id}
     </update>
 
-    <delete id="delete" parameterType="com.animalia.animalclassification.animalclassificationservice.model.AnimalClassificationSpeciesValue">
+    <delete id="delete" parameterType="com.animalia.animalclassification.animalclassificationservice.entity.AnimalClassificationSpeciesValue">
         DELETE FROM animal_classification_species_value WHERE id = #{id}
     </delete>
 

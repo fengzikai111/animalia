@@ -30,6 +30,11 @@ public class AnimalClassificationClassController {
         return animalClassificationClassService.getAnimalClassificationClassById(id);
     }
 
+    @GetMapping("/name/{name}")
+    public AnimalClassificationClass getAnimalClassificationClassByName(@PathVariable String name) {
+        return animalClassificationClassService.getAnimalClassificationClassByName(name);
+    }
+
     @PostMapping("/add")
     public void addAnimalClassificationClass(AnimalClassificationClass animalClassificationClass) {
         animalClassificationClassService.addAnimalClassificationClass(animalClassificationClass);
